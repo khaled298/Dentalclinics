@@ -1,0 +1,25 @@
+// wrangler.toml - ملف تكوين Cloudflare Workers
+
+name = "dental-clinic-system"
+main = "./.next/standalone/server.js"
+compatibility_date = "2023-09-01"
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./.next/static"
+
+[env.production]
+workers_dev = true
+routes = [
+  { pattern = "*/*", zone_name = "dental-clinic-system.pages.dev" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dental_clinic_db"
+database_id = "dental-clinic-system-db"
+
+[vars]
+NODE_ENV = "production"

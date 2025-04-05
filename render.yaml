@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: dental-clinic
+    env: node
+    plan: free
+    rootDir: deployment-package
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    region: frankfurt
+    branch: main
+    autoDeploy: true
